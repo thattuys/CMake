@@ -1,0 +1,25 @@
+set_target_properties(${PROJECT_NAME} PROPERTIES DEBUG_POSTFIX "_d")
+set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "/ignore:4099 /ignore:4098")
+
+set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_MINSIZEREL "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+set_target_properties(${PROJECT_NAME} PROPERTIES INTERPROCEDURAL_OPTIMIZATION_RELEASE TRUE)
+set_target_properties(${PROJECT_NAME} PROPERTIES INTERPROCEDURAL_OPTIMIZATION_RELWITHDEBINFO TRUE)
+set_target_properties(${PROJECT_NAME} PROPERTIES INTERPROCEDURAL_OPTIMIZATION_MINSIZEREL TRUE)
+
+target_compile_definitions(${PROJECT_NAME}
+    PRIVATE
+        NOMINMAX
+        _HAS_STD_BYTE=0
+        _NEWTON_STATIC_LIB
+        _CUSTOM_JOINTS_STATIC_LIB
+)
+
+target_link_libraries(${PROJECT_NAME} debug ${UltraEngine_LIBRARY_DEBUG})
+target_link_libraries(${PROJECT_NAME} optimized ${UltraEngine_LIBRARY_RELEASE})
+
+target_include_directories(${PROJECT_NAME}
+    PUBLIC
+        ${UltraEngine_INCLUDEDIRS}
+)

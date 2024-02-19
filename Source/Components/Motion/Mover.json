@@ -1,0 +1,23 @@
+{
+    "component":
+    {
+        "properties":
+        [
+            {
+                "name": "movementspeed",
+                "label": "Movement",
+                "value": [0.0,0.0,0.0]
+            },
+            {
+                "name": "rotationspeed",
+                "label": "Rotation",
+                "value": [0.0,0.0,0.0]
+            },
+            {
+                "name": "globalcoords",
+                "label": "Global",
+                "value": false
+            }
+        ]
+    }
+}

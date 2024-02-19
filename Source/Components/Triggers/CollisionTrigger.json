@@ -1,0 +1,29 @@
+{
+    "component":
+    {
+        "properties":
+        [
+            {
+                "name": "once",
+                "label": "Only once",
+                "value": false
+            }
+        ],
+        "outputs":
+        [
+            {
+                "name": "Collide"
+            }
+        ],
+        "inputs":
+        [
+            {
+                "name": "Disable"
+            },
+            {
+                "name": "Enable"
+            }
+        ]
+
+    }
+}

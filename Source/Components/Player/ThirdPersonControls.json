@@ -1,0 +1,38 @@
+{
+    "component":
+    {
+        "properties":
+        [
+            {
+                "name": "mousesmoothing",
+                "label": "Mouse smoothing",
+                "value": 0.0
+            },
+            {
+                "name": "mouselookspeed",
+                "label": "Look speed",
+                "value": 1.0
+            },
+            {
+                "name": "movespeed",
+                "label": "Walk speed",
+                "value": 1.2
+            },
+            {
+                "name": "runspeed",
+                "label": "Run speed",
+                "value": 4.8
+            },
+            {
+                "name": "modelangle",
+                "label": "Angle",
+                "value": 0
+            },
+            {
+                "name": "followdistance",
+                "label": "Follow distance",
+                "value": 2.0
+            }
+        ]
+    }
+}
