@@ -1,15 +1,32 @@
 #pragma once
-#include "UltraEngine.h"
+#include "Leadwerks.h"
 #include "Mover.h"
 
-using namespace UltraEngine;
+using namespace Leadwerks;
 
 Mover::Mover()
 { 
     name = "Mover";
 }
 
-bool Mover::Load(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const LoadFlags flags)
+void Mover::Update()
+{
+    if (GetEnabled())
+    {
+        auto entity = GetEntity();
+        if (globalcoords)
+        {
+            entity->Translate(movementspeed / 60.0f, true);
+        }
+        else
+        {
+            entity->Move(movementspeed / 60.0f);
+        }
+        entity->Turn(rotationspeed / 60.0f, globalcoords);
+    }
+}
+
+bool Mover::Load(table& properties, shared_ptr<Stream> binstream, shared_ptr<Scene> scene, const LoadFlags flags, shared_ptr<Object> extra)
 {
     if (properties["movementspeed"].is_array() and properties["movementspeed"].size() == 3)
     {            
@@ -24,10 +41,13 @@ bool Mover::Load(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map
         rotationspeed.z = properties["rotationspeed"][2];
     }
     if (properties["globalcoords"].is_boolean()) globalcoords = properties["globalcoords"];
+
+    // The member "enabled" is located in the base component class.
+    if (properties["enabled"].is_boolean()) enabled = properties["enabled"];
     return true;
 }
 	
-bool Mover::Save(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const SaveFlags flags)
+bool Mover::Save(table& properties, shared_ptr<Stream> binstream, shared_ptr<Scene> scene, const SaveFlags flags, shared_ptr<Object> extra)
 {
     properties["movementspeed"] = {};
     properties["movementspeed"][0] = movementspeed.x;
@@ -38,21 +58,10 @@ bool Mover::Save(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map
     properties["rotationspeed"][1] = rotationspeed.y;
     properties["rotationspeed"][2] = rotationspeed.z;
     properties["globalcoords"] = globalcoords;
-    return true;
-}
 
-void Mover::Update()
-{
-    auto entity = GetEntity();
-    if (globalcoords)
-    {
-        entity->Translate(movementspeed / 60.0f, true);
-    }
-    else
-    {
-        entity->Move(movementspeed / 60.0f);
-    }
-    entity->Turn(rotationspeed / 60.0f, globalcoords);
+    // The member "enabled" is located in the base component class.
+    properties["enabled"] = enabled;
+    return true;
 }
 
 //This method will work with simple components

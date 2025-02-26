@@ -1,3 +1,13 @@
+target_sources(${PROJECT_NAME}
+    PRIVATE
+        BaseComponent.cpp
+)
+add_subdirectory(AI)
+add_subdirectory(Appearance)
+add_subdirectory(Logic)
 add_subdirectory(Motion)
+add_subdirectory(Physics)
 add_subdirectory(Player)
+add_subdirectory(Sound)
 add_subdirectory(Triggers)
+add_subdirectory(Weapons)

@@ -13,9 +13,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_executable(${PROJECT_NAME})
 
-find_package(UltraEngine REQUIRED)
+find_package(Leadwerks REQUIRED)
 
-include(UltraEngine)
+include(Leadwerks)
 include(Steamworks)
 
 add_subdirectory(Source)

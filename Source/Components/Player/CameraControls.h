@@ -1,7 +1,7 @@
 #pragma once
-#include "UltraEngine.h"
+#include "Leadwerks.h"
 
-using namespace UltraEngine;
+using namespace Leadwerks;
 
 class CameraControls : public Component
 {
@@ -18,6 +18,6 @@ public:
 
 	virtual void Update();
 	virtual shared_ptr<Component> Copy();
-	virtual bool Load(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const LoadFlags flags);
-	virtual bool Save(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const SaveFlags flags);
+	virtual bool Load(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const LoadFlags flags, shared_ptr<Object> extra);
+	virtual bool Save(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const SaveFlags flags, shared_ptr<Object> extra);
 };

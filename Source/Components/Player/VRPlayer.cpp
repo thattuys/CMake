@@ -1,8 +1,8 @@
 #pragma once
-#include "UltraEngine.h"
+#include "Leadwerks.h"
 #include "VRPlayer.h"
 
-using namespace UltraEngine;
+using namespace Leadwerks;
 
 VRPlayer::VRPlayer()
 {
@@ -12,6 +12,7 @@ VRPlayer::VRPlayer()
 void VRPlayer::Start()
 {
 	auto entity = GetEntity();
+	entity->SetHidden(true);
 	hmd = GetHmd(entity->GetWorld());
 	hmd->SetOffset(entity->GetPosition(true), entity->GetRotation(true));
 }

@@ -17,6 +17,29 @@
                 "name": "globalcoords",
                 "label": "Global",
                 "value": false
+            },
+            {
+                "name": "enabled",
+                "label": "Enabled",
+                "value": true
+            }
+        ],
+        "outputs":
+        [
+            {
+                "name": "Disable"
+            },
+            {
+                "name": "Enable"
+            }
+        ],
+        "inputs":
+        [
+            {
+                "name": "Disable"
+            },
+            {
+                "name": "Enable"
             }
         ]
     }

@@ -16,10 +16,10 @@ target_compile_definitions(${PROJECT_NAME}
         _CUSTOM_JOINTS_STATIC_LIB
 )
 
-target_link_libraries(${PROJECT_NAME} debug ${UltraEngine_LIBRARY_DEBUG})
-target_link_libraries(${PROJECT_NAME} optimized ${UltraEngine_LIBRARY_RELEASE})
+target_link_libraries(${PROJECT_NAME} debug ${Leadwerks_LIBRARY_DEBUG})
+target_link_libraries(${PROJECT_NAME} optimized ${Leadwerks_LIBRARY_RELEASE})
 
 target_include_directories(${PROJECT_NAME}
     PUBLIC
-        ${UltraEngine_INCLUDEDIRS}
+        ${Leadwerks_INCLUDEDIRS}
 )

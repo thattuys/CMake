@@ -1,8 +1,8 @@
 #pragma once
-#include "UltraEngine.h"
+#include "Leadwerks.h"
 #include "CollisionTrigger.h"
 
-using namespace UltraEngine;
+using namespace Leadwerks;
 
 CollisionTrigger::CollisionTrigger()
 { 
@@ -37,7 +37,7 @@ void CollisionTrigger::Enable()
     enabled = true;
 }
 
-bool CollisionTrigger::Load(table& t, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const LoadFlags flags)
+bool CollisionTrigger::Load(table& t, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const LoadFlags flags, shared_ptr<Object> extra)
 {
     auto entity = GetEntity();
     if (t["once"].is_boolean()) once = t["once"];
@@ -45,7 +45,7 @@ bool CollisionTrigger::Load(table& t, shared_ptr<Stream> binstream, shared_ptr<M
 	return true;
 }
 
-bool CollisionTrigger::Save(table& t, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const SaveFlags flags)
+bool CollisionTrigger::Save(table& t, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const SaveFlags flags, shared_ptr<Object> extra)
 {
     t["once"] = once;
     t["enabled"] = enabled;

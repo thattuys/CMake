@@ -1,9 +1,10 @@
 #pragma once
-#include "UltraEngine.h"
+#include "Leadwerks.h"
+#include "../BaseComponent.h"
 
-using namespace UltraEngine;
+using namespace Leadwerks;
 
-class Mover : public Component
+class Mover : public BaseComponent
 {
 public: 
     Vec3 movementspeed;
@@ -11,9 +12,8 @@ public:
     bool globalcoords {false};
     
     Mover();
-
-    virtual bool Load(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const LoadFlags flags);
-    virtual bool Save(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const SaveFlags flags);
     virtual void Update();
+    virtual bool Load(table& properties, shared_ptr<Stream> binstream, shared_ptr<Scene> scene, const LoadFlags flags, shared_ptr<Object> extra);
+    virtual bool Save(table& properties, shared_ptr<Stream> binstream, shared_ptr<Scene> scene, const SaveFlags flags, shared_ptr<Object> extra);
     virtual std::shared_ptr<Component> Copy();
 };

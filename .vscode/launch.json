@@ -5,12 +5,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug",
+            "name": "Fast Debug",
             "type": "lua",
             "request": "launch",
             "workingDirectory": "${workspaceRoot}",
             "sourceBasePath": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/Holos_d.exe",
+            "executable": "${workspaceRoot}/$PROJECTNAME.exe",
+            "listenPublicly": false,
+            "arguments": "-debug",
+            "listenPort": 56789,
+            "encoding": "UTF-8",
+            "env": {}
+        },
+        {
+            "name": "Full Debug",
+            "type": "lua",
+            "request": "launch",
+            "workingDirectory": "${workspaceRoot}",
+            "sourceBasePath": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/$PROJECTNAME_d.exe",
             "listenPublicly": false,
             "arguments": "-debug",
             "listenPort": 56789,
@@ -23,11 +36,11 @@
             "request": "launch",
             "workingDirectory": "${workspaceRoot}",
             "sourceBasePath": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/Holos.exe",
+            "executable": "${workspaceRoot}/$PROJECTNAME.exe",
             "listenPublicly": false,
             "listenPort": 56789,
             "encoding": "UTF-8",
             "env": {}
-        }           
+        }                   
     ]
 }

@@ -1,10 +1,10 @@
 #pragma once
-#include "UltraEngine.h"
+#include "Leadwerks.h"
 #include "Steamworks.h"
 
 namespace Steamworks
 {
-	using namespace UltraEngine;
+	using namespace Leadwerks;
 
 	//-------------------------------------------------------------------------------
 	// Globals
@@ -288,8 +288,6 @@ namespace Steamworks
 		if (not Initialize()) return false;
 		String s = name.ToUtf8String();
 		SteamUserStats()->SetStat(s.c_str(), i);
-
-		return true;
 	}
 
 	int GetStat(const WString& name)

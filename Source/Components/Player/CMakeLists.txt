@@ -2,6 +2,8 @@ target_sources(${PROJECT_NAME}
     PRIVATE
         CameraControls.cpp
         FirstPersonControls.cpp
+        FPSPlayer.cpp
+        Player.cpp
         ThirdPersonControls.cpp
         VRPlayer.cpp
 )

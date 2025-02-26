@@ -1,15 +1,12 @@
-#include "UltraEngine.h"
+#include "Leadwerks.h"
 #include "ComponentSystem.h"
+#include "Encryption.h"
+//#include "Steamworks/Steamworks.h"
 
-#ifdef USE_STEAMWORKS
-#include "Steamworks/Steamworks.h"
-#endif
+using namespace Leadwerks;
 
-using namespace UltraEngine;
-
-int main(int argc, const char *argv[])
+int main(int argc, const char* argv[])
 {
-
 #ifdef STEAM_API_H
     if (not Steamworks::Initialize())
     {
@@ -21,29 +18,48 @@ int main(int argc, const char *argv[])
     RegisterComponents();
 
     auto cl = ParseCommandLine(argc, argv);
-
-    // Load FreeImage plugin (optional)
-    auto fiplugin = LoadPlugin("Plugins/FITextureLoader");
-
-    // Get the displays
+    
+    //Get the displays
     auto displays = GetDisplays();
 
-    // Create a window
-    auto window = CreateWindow("Ultra Engine", 0, 0, 1280 * displays[0]->scale, 720 * displays[0]->scale, displays[0], WINDOW_CENTER | WINDOW_TITLEBAR);
+    //Create a window
+    auto window = CreateWindow("Leadwerks", 0, 0, 1280 * displays[0]->scale, 720 * displays[0]->scale, displays[0], WINDOW_CENTER | WINDOW_TITLEBAR);
 
-    // Create a framebuffer
+    //Create a framebuffer
     auto framebuffer = CreateFramebuffer(window);
 
-    // Create a world
+    //Create a world
     auto world = CreateWorld();
+    
+    //Load packages
+    std::vector<std::shared_ptr<Package> > packages;
+    auto dir = LoadDir("");
+    String password;
+    GetPassword(password);
+    for (auto file : dir)
+    {
+        if (ExtractExt(file).Lower() == "zip")
+        {
+            auto pak = LoadPackage(file);
+            if (pak)
+            {
+                if (not password.empty())
+                {
+                    pak->SetPassword(password);
+                    pak->Restrict();
+                }
+                packages.push_back(pak);
+            }
+        }
+    }
+    //password.Clear();
 
-    // Load the map
+    //Load the map
     WString mapname = "Maps/start.ultra";
-    if (cl["map"].is_string())
-        mapname = std::string(cl["map"]);
-    auto scene = LoadMap(world, mapname);
+    if (cl["map"].is_string()) mapname = std::string(cl["map"]);
+    auto scene = LoadScene(world, mapname);
 
-    // Main loop
+    //Main loop
     while (window->Closed() == false and window->KeyDown(KEY_ESCAPE) == false)
     {
         world->Update();
@@ -52,6 +68,7 @@ int main(int argc, const char *argv[])
 #ifdef STEAM_API_H
         Steamworks::Update();
 #endif
+
     }
 
 #ifdef STEAM_API_H

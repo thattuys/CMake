@@ -3,6 +3,9 @@ target_sources(${PROJECT_NAME}
         UltraEngine.cpp
         project.rc
         main.cpp
+        SelectDevice.cpp
+        Encryption.cpp
+        Leadwerks.cpp
 )
 
 add_subdirectory(Components)

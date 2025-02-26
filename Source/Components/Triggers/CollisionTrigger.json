@@ -4,6 +4,11 @@
         "properties":
         [
             {
+                "name": "enabled",
+                "label": "Enabled",
+                "value": true
+            },
+            {
                 "name": "once",
                 "label": "Only once",
                 "value": false
@@ -12,16 +17,22 @@
         "outputs":
         [
             {
+                "name": "Enable"
+            },
+            {
+                "name": "Disable"
+            },
+            {
                 "name": "Collide"
             }
         ],
         "inputs":
         [
             {
-                "name": "Disable"
+                "name": "Enable"
             },
             {
-                "name": "Enable"
+                "name": "Disable"
             }
         ]
 

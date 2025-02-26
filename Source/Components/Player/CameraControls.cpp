@@ -1,8 +1,8 @@
 #pragma once
-#include "UltraEngine.h"
+#include "Leadwerks.h"
 #include "CameraControls.h"
 
-using namespace UltraEngine;
+using namespace Leadwerks;
 
 CameraControls::CameraControls()
 {
@@ -55,7 +55,7 @@ shared_ptr<Component> CameraControls::Copy()
 	return std::make_shared<CameraControls>(*this);
 }
 
-bool CameraControls::Load(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const LoadFlags flags)
+bool CameraControls::Load(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const LoadFlags flags, shared_ptr<Object> extra)
 {
     if (properties["mousesmoothing"].is_number()) mousesmoothing = properties["mousesmoothing"];
     if (properties["mouselookspeed"].is_number()) mouselookspeed = properties["mouselookspeed"];
@@ -63,7 +63,7 @@ bool CameraControls::Load(table& properties, shared_ptr<Stream> binstream, share
 	return true;
 }
 	
-bool CameraControls::Save(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const SaveFlags flags)
+bool CameraControls::Save(table& properties, shared_ptr<Stream> binstream, shared_ptr<Map> scene, const SaveFlags flags, shared_ptr<Object> extra)
 {
 	properties["mousesmoothing"] = mousesmoothing;
 	properties["mouselookspeed"] = mouselookspeed;
